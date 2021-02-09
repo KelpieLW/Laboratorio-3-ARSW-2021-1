@@ -20,11 +20,14 @@ Control de hilos con wait/notify. Productor/consumidor.
 La clase responsable del consumo del procesador que se puede apreciar es la clase consumidor. Eso se debe a que la misma esta ejecutándose de manera continua en un ciclo y utiliza constantemente el CPU  
 Mientras que la clase productora dura inactiva un segundo por cada iteración.  
 
+![](punto1.PNG)
+
 2. Haga los ajustes necesarios para que la solución use más eficientemente la CPU, teniendo en cuenta que -por ahora- la producción es lenta y el consumo es rápido. Verifique con JVisualVM que el consumo de CPU se reduzca.  
 Al haber hecho que el consumidor esperara por el productor se vio una mejora significativa en el uso del CPU.  
+![](punto2.PNG)
 
 3. Haga que ahora el productor produzca muy rápido, y el consumidor consuma lento. Teniendo en cuenta que el productor conoce un límite de Stock (cuantos elementos debería tener, a lo sumo en la cola), haga que dicho límite se respete. Revise el API de la colección usada como cola para ver cómo garantizar que dicho límite no se supere. Verifique que, al poner un límite pequeño para el 'stock', no haya consumo alto de CPU ni errores.
-
+![](punto3.PNG)
 
 #### Parte II. – Antes de terminar la clase.
 
@@ -71,6 +74,18 @@ Sincronización y Dead-Locks.
 8. Plantee una estrategia para corregir el problema antes identificado (puede revisar de nuevo las páginas 206 y 207 de _Java Concurrency in Practice_).
 
 9. Una vez corregido el problema, rectifique que el programa siga funcionando de manera consistente cuando se ejecutan 100, 1000 o 10000 inmortales. Si en estos casos grandes se empieza a incumplir de nuevo el invariante, debe analizar lo realizado en el paso 4.
+
+- Prueba con 100 inmortales
+
+![](prueba100.PNG)
+
+- Prueba con 1000 inmortales
+
+![](prueba1000.PNG)
+
+- Prueba con 10000 inmortales
+
+![](prueba10000.PNG)
 
 10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
 	* Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
