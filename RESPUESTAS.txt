@@ -1,0 +1,8 @@
+10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
+	
+¿Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? 
+El funcionamiento original de la simulación presenta un claro caso de condición de carrera, un 
+ejemplo de este caso es cuando uno de los "inmortales" hace puntos de daño justo antes de pasar a
+estar muerto. La condición de carrera consiste en que este aún puede hacer puntos de daño justo antes de morir y el resultado de hacer el ultimo daño o no hacerlo y morir por otro golpe es
+determinado únicamente por que operación se va a ejecutar primero en el "scheduler" del procesador,
+si su propio golpe momentos antes de morir o si el golpe final que recibirá.

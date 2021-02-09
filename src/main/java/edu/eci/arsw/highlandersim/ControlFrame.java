@@ -87,30 +87,39 @@ public class ControlFrame extends JFrame {
         JButton btnPauseAndCheck = new JButton("Pause and check");
         btnPauseAndCheck.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
-                /*
-				 * COMPLETAR
-                 */
                 int sum = 0;
-                for (Immortal im : immortals) {
-                    sum += im.getHealth();
+
+                for (int i = 0; i < immortals.size(); i++) {
+
+                    immortals.get(i).setPaused(false);
+
                 }
+
+                for (Immortal im : immortals) {
+                    sum += im.getHealth().get();
+                }
+
 
                 statisticsLabel.setText("<html>"+immortals.toString()+"<br>Health sum:"+ sum);
                 
                 
 
             }
+
+
         });
+
         toolBar.add(btnPauseAndCheck);
 
         JButton btnResume = new JButton("Resume");
 
         btnResume.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                /**
-                 * IMPLEMENTAR
-                 */
+
+                for (int i=0;i<immortals.size() ;i++) {
+                    immortals.get(i).resumeImmortal();
+
+                }
 
             }
         });
@@ -163,6 +172,8 @@ public class ControlFrame extends JFrame {
 
     }
 
+
+
 }
 
 class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback{
@@ -173,8 +184,8 @@ class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback{
     public TextAreaUpdateReportCallback(JTextArea ta,JScrollPane jsp) {
         this.ta = ta;
         this.jsp=jsp;
-    }       
-    
+    }
+
     @Override
     public void processReport(String report) {
         ta.append(report);
@@ -189,5 +200,7 @@ class TextAreaUpdateReportCallback implements ImmortalUpdateReportCallback{
         );
 
     }
-    
+
+
+
 }
