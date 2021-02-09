@@ -77,15 +77,15 @@ Sincronización y Dead-Locks.
 
 - Prueba con 100 inmortales
 
-![](prueba100.PNG)
+![](prueba100.png)
 
 - Prueba con 1000 inmortales
 
-![](prueba1000.PNG)
+![](prueba1000.png)
 
 - Prueba con 10000 inmortales
 
-![](prueba10000.PNG)
+![](prueba10000.png)
 
 10. Un elemento molesto para la simulación es que en cierto punto de la misma hay pocos 'inmortales' vivos realizando peleas fallidas con 'inmortales' ya muertos. Es necesario ir suprimiendo los inmortales muertos de la simulación a medida que van muriendo. Para esto:
 	* Analizando el esquema de funcionamiento de la simulación, esto podría crear una condición de carrera? Implemente la funcionalidad, ejecute la simulación y observe qué problema se presenta cuando hay muchos 'inmortales' en la misma. Escriba sus conclusiones al respecto en el archivo RESPUESTAS.txt.
