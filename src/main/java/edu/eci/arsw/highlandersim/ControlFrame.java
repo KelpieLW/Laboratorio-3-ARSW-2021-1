@@ -117,6 +117,7 @@ public class ControlFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 for (int i=0;i<immortals.size() ;i++) {
+
                     immortals.get(i).resumeImmortal();
 
                 }
@@ -136,6 +137,19 @@ public class ControlFrame extends JFrame {
 
         JButton btnStop = new JButton("STOP");
         btnStop.setForeground(Color.RED);
+
+        btnStop.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                for (int i=0;i<immortals.size() ;i++) {
+
+                    immortals.get(i).killImmortal();
+
+                }
+
+            }
+        });
+
         toolBar.add(btnStop);
 
         scrollPane = new JScrollPane();
