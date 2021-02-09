@@ -61,15 +61,13 @@ public class Immortal extends Thread {
                 e.printStackTrace();
             }
 
-            while (!getPaused()){
+            if (!getPaused()){
                 pauseImmortal();
             }
 
 
-
-
         }
-        System.out.println(immortalsPopulation.size());
+
 
     }
 
@@ -84,7 +82,6 @@ public class Immortal extends Thread {
         } else {
             updateCallback.processReport(this + " says:" + i2 + " is already dead!\n");
             setRunning(new AtomicBoolean(false));
-            this.stop();
 
         }
 
@@ -119,25 +116,35 @@ public class Immortal extends Thread {
 
 
     public void pauseImmortal() {
-        synchronized (this) {
+        synchronized (immortalsPopulation) {
 
             try {
                 //immortalsPopulation.wait();
-                this.wait();
+                immortalsPopulation.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
 
     }
-    public  void resumeImmortal(){
-        synchronized (this) {
+    public void resumeImmortal(){
+        synchronized (immortalsPopulation) {
+
             setPaused(true);
 
+
             if (getPaused()){
-                this.notifyAll();
+
+
+                immortalsPopulation.notify();
             }
+
         }
+    }
+
+    public synchronized void killImmortal(){
+        setRunning(new AtomicBoolean(false));
+
     }
 
 
